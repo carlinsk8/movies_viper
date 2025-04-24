@@ -26,9 +26,10 @@ Aplicación iOS desarrollada en **Swift** utilizando arquitectura **VIPER** y UI
 
 1. Clona el repositorio
 2. Abre el proyecto `.xcodeproj` en Xcode
-3. Asegúrate de tener configurado un archivo `Environment.plist` con:
+3. Renombra el archivo de entorno:
 
 ```xml
+cp Environment.example.plist Environment.plist
 <key>API_BASE_URL</key>
 <string>https://api.themoviedb.org/3</string>
 <key>API_KEY</key>

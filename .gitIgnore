@@ -1,0 +1,48 @@
+# Xcode
+*.xcuserdata
+*.xcuserstate
+*.xccheckout
+*.moved-aside
+DerivedData/
+.idea/
+*.xcworkspace
+
+# SwiftPM
+.build/
+.swiftpm/xcode/package.xcworkspace/
+
+# Cocoapods
+Pods/
+Podfile.lock
+
+
+# Archives
+*.xcarchive
+*.ipa
+
+# Env config
+**/Environment.plist
+
+# User data
+*.DS_Store
+*.swp
+*.swo
+
+# Logs
+*.log
+
+# Playgrounds
+timeline.xctimeline
+playground.xcworkspace
+
+# Unit test coverage
+*.gcno
+*.gcda
+*.profdata
+
+# Xcode previews cache
+*.xcpreview
+
+# CoreData migration support
+*.sqlite-shm
+*.sqlite-wal

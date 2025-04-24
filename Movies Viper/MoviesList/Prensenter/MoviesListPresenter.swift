@@ -8,11 +8,7 @@
 import UIKit
 
 class MoviesListPresenter: MoviesListPresenterProtocol, MoviesListInteractorOutputProtocol {
-    func didSelectMovie(_ movie: Movie) {
-        if let viewController = view as? UIViewController {
-            router?.navigateToMovieDetail(from: viewController, movie: movie)
-        }
-    }
+    
     
     weak var view: MoviesListViewProtocol?
     var interactor: MoviesListInteractorProtocol?
@@ -44,6 +40,11 @@ class MoviesListPresenter: MoviesListPresenterProtocol, MoviesListInteractorOutp
             self.view?.showError(error)
         }
     }
+    func didSelectMovie(_ movie: Movie) {
+        guard let view = view as? UIViewController else { return }
+        router?.navigateToMovieDetail(from: view, movie: movie)
+    }
+
 }
 
     

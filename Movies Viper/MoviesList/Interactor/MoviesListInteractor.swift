@@ -9,53 +9,39 @@ import Foundation
 
 class MoviesListInteractor: MoviesListInteractorProtocol {
     weak var output: MoviesListInteractorOutputProtocol?
+    private let apiService: MoviesAPIServiceProtocol
+    private let persistenceService: MoviePersistenceServiceProtocol
     private var isFetching = false
+    private let reachability: ReachabilityChecking
+    
+    init(apiService: MoviesAPIServiceProtocol,
+    persistenceService: MoviePersistenceServiceProtocol,
+         reachability: ReachabilityChecking) {
+        self.apiService = apiService
+        self.persistenceService = persistenceService
+        self.reachability = reachability
+    }
 
     func fetchUpcomingMovies(page: Int) {
-        if ReachabilityService.isConnectedToNetwork() {
-            //  Hay internet → consumir API
+        if reachability.isConnectedToNetwork() {
             print("Conectado a internet")
-            let urlString = "\(Environment.baseURL)/movie/upcoming?api_key=\(Environment.apiKey)&language=es-PE&page=\(page)"
-            guard let url = URL(string: urlString) else {
-                output?.moviesFetchFailed("URL inválida")
-                return
-            }
-
-            let task = URLSession.shared.dataTask(with: url) { [weak self] data, _, error in
+            apiService.fetchUpcomingMovies(page: page) { [weak self] result in
                 guard let self = self else { return }
 
-                if let error = error {
-                    DispatchQueue.main.async {
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success(let movies):
+                        self.persistenceService.saveMovies(movies)
+                        self.output?.moviesFetched(movies)
+
+                    case .failure(let error):
                         self.output?.moviesFetchFailed("Error de red: \(error.localizedDescription)")
-                    }
-                    return
-                }
-
-                guard let data = data else {
-                    DispatchQueue.main.async {
-                        self.output?.moviesFetchFailed("Sin datos desde servidor")
-                    }
-                    return
-                }
-
-                do {
-                    let response = try JSONDecoder().decode(MoviesResponse.self, from: data)
-                    MoviePersistenceService.shared.saveMovies(response.results) // Guardar local
-                    DispatchQueue.main.async {
-                        self.output?.moviesFetched(response.results)
-                    }
-                } catch {
-                    DispatchQueue.main.async {
-                        self.output?.moviesFetchFailed("Error parseando: \(error.localizedDescription)")
                     }
                 }
             }
-            task.resume()
-
         } else {
-            //  Sin internet → usar local
             print("Sin conexión a internet")
-            let cached = MoviePersistenceService.shared.fetchCachedMovies()
+            let cached = persistenceService.fetchCachedMovies()
             if cached.isEmpty {
                 output?.moviesFetchFailed("Sin conexión y sin datos guardados.")
             } else {
@@ -63,5 +49,6 @@ class MoviesListInteractor: MoviesListInteractorProtocol {
             }
         }
     }
+
 
 }

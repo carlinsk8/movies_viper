@@ -30,3 +30,12 @@ protocol MoviesListInteractorOutputProtocol: AnyObject {
 protocol MoviesListRouterProtocol: AnyObject {
     func navigateToMovieDetail(from view: UIViewController, movie: Movie)
 }
+
+protocol MoviePersistenceServiceProtocol {
+    func saveMovies(_ movies: [Movie])
+    func fetchCachedMovies() -> [Movie]
+}
+
+protocol MoviesAPIServiceProtocol {
+    func fetchUpcomingMovies(page: Int, completion: @escaping (Result<[Movie], Error>) -> Void)
+}

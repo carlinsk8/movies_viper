@@ -8,12 +8,13 @@
 import Foundation
 import CoreData
 
-class MoviePersistenceService {
+class MoviePersistenceService: MoviePersistenceServiceProtocol {
     static let shared = MoviePersistenceService()
+
     private let context = CoreDataManager.shared.context
 
     func saveMovies(_ movies: [Movie]) {
-        // Eliminar existentes
+        // Eliminar datos anteriores
         let fetchRequest: NSFetchRequest<NSFetchRequestResult> = CDMovie.fetchRequest()
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
         do {
@@ -22,7 +23,7 @@ class MoviePersistenceService {
             print("❌ Error deleting old data: \(error.localizedDescription)")
         }
 
-        // Insertar nuevas
+        // Insertar nuevos registros
         for movie in movies {
             let cdMovie = CDMovie(context: context)
             cdMovie.id = Int64(movie.id)
@@ -53,6 +54,16 @@ class MoviePersistenceService {
         } catch {
             print("❌ Failed to fetch cached movies: \(error.localizedDescription)")
             return []
+        }
+    }
+
+    func clearMovies() {
+        let fetchRequest: NSFetchRequest<NSFetchRequestResult> = CDMovie.fetchRequest()
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: fetchRequest)
+        do {
+            try context.execute(deleteRequest)
+        } catch {
+            print("❌ Error clearing Core Data: \(error.localizedDescription)")
         }
     }
 }

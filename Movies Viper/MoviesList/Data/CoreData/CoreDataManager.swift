@@ -6,16 +6,15 @@
 //
 
 import CoreData
-import UIKit
 
 class CoreDataManager {
     static let shared = CoreDataManager()
 
     lazy var persistentContainer: NSPersistentContainer = {
-        let container = NSPersistentContainer(name: "MoviesDataModel")
+        let container = NSPersistentContainer(name: "MoviesDataModel") // mismo nombre que el .xcdatamodeld
         container.loadPersistentStores { _, error in
             if let error = error {
-                fatalError("Failed to load Core Data stack: \(error)")
+                fatalError("❌ Error cargando Core Data: \(error.localizedDescription)")
             }
         }
         return container
@@ -31,7 +30,7 @@ class CoreDataManager {
             do {
                 try context.save()
             } catch {
-                print("Failed to save context: \(error.localizedDescription)")
+                print("❌ Error al guardar contexto: \(error.localizedDescription)")
             }
         }
     }

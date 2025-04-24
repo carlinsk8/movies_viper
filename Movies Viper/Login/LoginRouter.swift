@@ -12,6 +12,10 @@ class LoginRouter: LoginRouterProtocol {
 
     func navigateToMovieList() {
         let movieListVC = MoviesListBuilder.build()
-        viewController?.navigationController?.pushViewController(movieListVC, animated: true)
+        let nav = UINavigationController(rootViewController: movieListVC)
+        nav.modalPresentationStyle = .fullScreen
+        viewController?.present(nav, animated: true, completion: nil)
+
+
     }
 }

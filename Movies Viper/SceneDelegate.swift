@@ -18,12 +18,18 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         guard let windowScene = (scene as? UIWindowScene) else { return }
         
         let window = UIWindow(windowScene: windowScene)
-        let loginModule = LoginModuleBuilder.build()
-        let navigationController = UINavigationController(rootViewController: loginModule)
-        window.rootViewController = navigationController
-        self.window = window
-        window.backgroundColor = .black
+
+        if SessionManager.isLoggedIn {
+            let moviesVC = MoviesListBuilder.build()
+            window.rootViewController = UINavigationController(rootViewController: moviesVC)
+        } else {
+            let loginVC = LoginModuleBuilder.build()
+            window.rootViewController = UINavigationController(rootViewController: loginVC)
+        }
+
         window.makeKeyAndVisible()
+        window.overrideUserInterfaceStyle = .dark
+        self.window = window
         
     }
 }

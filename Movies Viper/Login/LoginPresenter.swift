@@ -15,6 +15,7 @@ class LoginPresenter: LoginPresenterProtocol, LoginInteractorOutputProtocol {
     }
 
     func loginSucceeded() {
+        SessionManager.isLoggedIn = true
         router?.navigateToMovieList()
     }
 

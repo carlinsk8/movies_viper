@@ -116,10 +116,46 @@ class MoviesListViewController: UIViewController, MoviesListViewProtocol {
         navigationItem.hidesBackButton = true
         title = "Upcoming Movies"
         view.backgroundColor = UIColor(white: 0.05, alpha: 1)
+        
         setupTableView()
         presenter.viewDidLoad()
         
+        let logoutIcon = UIImage(named: "logout")?.withRenderingMode(.alwaysTemplate)
+
+        let logoutButton = UIButton(type: .system)
+        logoutButton.setImage(logoutIcon, for: .normal)
+        logoutButton.tintColor = .white
+        logoutButton.imageView?.contentMode = .scaleAspectFit
+        logoutButton.frame = CGRect(x: 0, y: 0, width: 24, height: 24)
+        logoutButton.addTarget(self, action: #selector(logoutTapped), for: .touchUpInside)
+
+        let container = UIView(frame: CGRect(x: 0, y: 0, width: 32, height: 32))
+        container.addSubview(logoutButton)
+
+        logoutButton.center = CGPoint(x: container.bounds.midX, y: container.bounds.midY)
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(customView: container)
+
+
+        
     }
+    
+    @objc private func logoutTapped() {
+        SessionManager.logout()
+
+        let loginVC = LoginModuleBuilder.build()
+        let nav = UINavigationController(rootViewController: loginVC)
+        nav.modalPresentationStyle = .fullScreen
+
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first {
+            window.rootViewController = nav
+            window.makeKeyAndVisible()
+        }
+    }
+
+
+
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)

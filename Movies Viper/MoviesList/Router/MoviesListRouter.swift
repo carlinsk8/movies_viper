@@ -9,10 +9,14 @@ import UIKit
 
 class MoviesListRouter: MoviesListRouterProtocol {
     func navigateToMovieDetail(from view: UIViewController, movie: Movie) {
-        // Este será reemplazado por MovieDetailModuleBuilder.build(movie: movie)
-        let detailVC = UIViewController()
-        detailVC.title = movie.title
-        detailVC.view.backgroundColor = .white
-        view.navigationController?.pushViewController(detailVC, animated: true)
+        let detailVC = MovieDetailViewController(movie: movie)
+        
+        if let sheet = detailVC.sheetPresentationController {
+            sheet.detents = [.medium(), .large()] // Estilo como en la imagen
+            sheet.prefersGrabberVisible = true
+        }
+        
+        view.present(detailVC, animated: true)
     }
+
 }

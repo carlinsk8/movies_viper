@@ -11,8 +11,17 @@ class LoginPresenter: LoginPresenterProtocol, LoginInteractorOutputProtocol {
     var router: LoginRouterProtocol?
 
     func loginTapped(username: String, password: String) {
-        interactor?.validateUser(username: username, password: password)
+        let trimmedUsername = username.trimmingCharacters(in: .whitespaces)
+        let trimmedPassword = password.trimmingCharacters(in: .whitespaces)
+
+        if trimmedUsername.isEmpty || trimmedPassword.isEmpty {
+            view?.showError("Please enter username and password")
+        } else {
+            interactor?.validateUser(username: trimmedUsername, password: trimmedPassword)
+        }
     }
+
+
 
     func loginSucceeded() {
         SessionManager.isLoggedIn = true

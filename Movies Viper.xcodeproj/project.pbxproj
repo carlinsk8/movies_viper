@@ -10,8 +10,19 @@
 		072A18942DBA83040047B15C /* Kingfisher in Frameworks */ = {isa = PBXBuildFile; productRef = 072A18932DBA83040047B15C /* Kingfisher */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		072A18C72DBAB7BE0047B15C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 072A18452DB9B4C50047B15C /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 072A184C2DB9B4C50047B15C;
+			remoteInfo = "Movies Viper";
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		072A184D2DB9B4C50047B15C /* Movies Viper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Movies Viper.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		072A18C32DBAB7BE0047B15C /* Movies ViperTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Movies ViperTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -33,6 +44,11 @@
 			path = "Movies Viper";
 			sourceTree = "<group>";
 		};
+		072A18C42DBAB7BE0047B15C /* Movies ViperTests */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = "Movies ViperTests";
+			sourceTree = "<group>";
+		};
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +60,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		072A18C02DBAB7BE0047B15C /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
@@ -51,6 +74,7 @@
 			isa = PBXGroup;
 			children = (
 				072A184F2DB9B4C50047B15C /* Movies Viper */,
+				072A18C42DBAB7BE0047B15C /* Movies ViperTests */,
 				072A184E2DB9B4C50047B15C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -59,6 +83,7 @@
 			isa = PBXGroup;
 			children = (
 				072A184D2DB9B4C50047B15C /* Movies Viper.app */,
+				072A18C32DBAB7BE0047B15C /* Movies ViperTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -89,6 +114,29 @@
 			productReference = 072A184D2DB9B4C50047B15C /* Movies Viper.app */;
 			productType = "com.apple.product-type.application";
 		};
+		072A18C22DBAB7BE0047B15C /* Movies ViperTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 072A18C92DBAB7BE0047B15C /* Build configuration list for PBXNativeTarget "Movies ViperTests" */;
+			buildPhases = (
+				072A18BF2DBAB7BE0047B15C /* Sources */,
+				072A18C02DBAB7BE0047B15C /* Frameworks */,
+				072A18C12DBAB7BE0047B15C /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				072A18C82DBAB7BE0047B15C /* PBXTargetDependency */,
+			);
+			fileSystemSynchronizedGroups = (
+				072A18C42DBAB7BE0047B15C /* Movies ViperTests */,
+			);
+			name = "Movies ViperTests";
+			packageProductDependencies = (
+			);
+			productName = "Movies ViperTests";
+			productReference = 072A18C32DBAB7BE0047B15C /* Movies ViperTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -101,6 +149,10 @@
 				TargetAttributes = {
 					072A184C2DB9B4C50047B15C = {
 						CreatedOnToolsVersion = 16.3;
+					};
+					072A18C22DBAB7BE0047B15C = {
+						CreatedOnToolsVersion = 16.3;
+						TestTargetID = 072A184C2DB9B4C50047B15C;
 					};
 				};
 			};
@@ -122,12 +174,20 @@
 			projectRoot = "";
 			targets = (
 				072A184C2DB9B4C50047B15C /* Movies Viper */,
+				072A18C22DBAB7BE0047B15C /* Movies ViperTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
 		072A184B2DB9B4C50047B15C /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		072A18C12DBAB7BE0047B15C /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -144,7 +204,22 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		072A18BF2DBAB7BE0047B15C /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		072A18C82DBAB7BE0047B15C /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 072A184C2DB9B4C50047B15C /* Movies Viper */;
+			targetProxy = 072A18C72DBAB7BE0047B15C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		072A18612DB9B4C60047B15C /* Debug */ = {
@@ -161,7 +236,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -189,7 +264,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 16.6;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -322,6 +397,44 @@
 			};
 			name = Release;
 		};
+		072A18CA2DBAB7BE0047B15C /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T8G4487AA2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.creeg.Movies-ViperTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Movies Viper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Movies Viper";
+			};
+			name = Debug;
+		};
+		072A18CB2DBAB7BE0047B15C /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = T8G4487AA2;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = "com.creeg.Movies-ViperTests";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Movies Viper.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Movies Viper";
+			};
+			name = Release;
+		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
@@ -339,6 +452,15 @@
 			buildConfigurations = (
 				072A18612DB9B4C60047B15C /* Debug */,
 				072A18622DB9B4C60047B15C /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		072A18C92DBAB7BE0047B15C /* Build configuration list for PBXNativeTarget "Movies ViperTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				072A18CA2DBAB7BE0047B15C /* Debug */,
+				072A18CB2DBAB7BE0047B15C /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
